@@ -1,14 +1,16 @@
 import mysql.connector
 from tabulate import tabulate
+from dotenv import load_dotenv
+import os
 
 # rentalcar.py
+load_dotenv()  # Load environment variables from .env file
 config = {
-    'host': 'cis2368summer.cidyiu02y2ba.us-east-1.rds.amazonaws.com', #hostname address
+    'host': os.gotenv('db_host'), #hostname address
     'port': 3306,  # default MySQL port
-    'user': 'admin', # username
-    # password for the user
-    'password': 'Rental#car1234',
-    'database': 'cis2368summerdb',
+    'user': os.gotenv('db_user'), # username
+    'password': os.gotenv('db_password'), # password
+    'database': os.gotenv('db_name') # database name,
 }
 
 def connect_db():
